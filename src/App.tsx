@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import { useState } from "react";
+import { Countries } from "./components/Countries";
 
 function App() {
   const themes = [
@@ -7,7 +8,7 @@ function App() {
       bg: "bg-dark",
       elements: "bg-dark-elements",
       text: "text-dark-text",
-      input: "",
+      inputPlaceholder: "placeholder-white",
       themeIcon: "fa-solid fa-moon",
     },
 
@@ -15,11 +16,10 @@ function App() {
       bg: "bg-light",
       elements: "bg-light-elements",
       text: "text-light-text",
-      input: "bg-light-input",
+      inputPlaceholder: "placeholder-black",
       themeIcon: "fa-regular fa-moon",
     },
   ];
-  // console.log(themes[0] === themes[1])
   const [theme, setTheme] = useState(themes[0]);
   function changeTheme() {
     if (theme.bg === themes[1].bg) {
@@ -30,9 +30,9 @@ function App() {
   }
 
   return (
-    <div className={`${theme.bg} ${theme.text}`}>
+    <div className={`${theme.bg} ${theme.text} h-screen`}>
       <Header changeTheme={changeTheme} themeIcon={theme.themeIcon} themeElementBg={theme.elements}/>
-      
+      <Countries themeElementBg={theme.elements} themeInputPlaceholder={theme.inputPlaceholder}/>
     </div>
   );
 }
