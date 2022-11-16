@@ -6,15 +6,17 @@ import { Filter } from "./Filter";
 import { Input } from "./Input";
 
 interface props {
-  themeElementBg: string;
-  themeInputPlaceholder: string;
+  themeElementBg: string,
+  themeInputPlaceholder: string,
+  region:string,
 }
 
 
 export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
   const [countries, setCountries] = useState<ICountries[] | []>([]);
   const [countryName, setCountryName] = useState<string>();
-  
+  const [region, setRegion] = useState<string>('vazio');
+
   async function getCountries() {
     if (countryName) {
       const request:any = await api.getCountries(countryName);
@@ -30,6 +32,11 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
     setCountryName(event.target.value);
   }
 
+  function getRegion(event:React.ChangeEvent<HTMLSelectElement>) {
+    setRegion(event.target.value);
+    
+  }
+
   useEffect(() => {
     getCountries();
   }, [countryName]);
@@ -42,11 +49,20 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
           themeInputPlaceholder={themeInputPlaceholder}
           getCountryName={getCountryName}
         />
-        <Filter themeElementBg={themeElementBg} />
+        <Filter 
+          themeElementBg={themeElementBg} 
+          getRegion={getRegion}
+          region={region}
+        />
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-8 lg:px-36">
-        {countries.map(country => (
-          <Country country={country} themeElementBg={themeElementBg} key={country.name.official}/>
+      
+         {region !== 'vazio' ? 
+            countries.map(country => country.region === region && (
+              <Country country={country} themeElementBg={themeElementBg} key={country.name.official}/>
+        )) 
+          : countries.map(country => (
+              <Country country={country} themeElementBg={themeElementBg} key={country.name.official}/>
         ))}
       </div>
     </section>
