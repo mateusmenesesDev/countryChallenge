@@ -5,7 +5,7 @@ import { Countries } from "./components/Countries";
 function App() {
   const themes = [
     {
-      bg: "bg-dark",
+      bg: "hsl(207, 26%, 17%)",
       elements: "bg-dark-elements",
       text: "text-dark-text",
       inputPlaceholder: "placeholder-white",
@@ -13,7 +13,7 @@ function App() {
     },
 
     {
-      bg: "bg-light",
+      bg: "hsl(0, 0%, 98%)",
       elements: "bg-light-elements",
       text: "text-light-text",
       inputPlaceholder: "placeholder-black",
@@ -28,7 +28,7 @@ function App() {
       setTheme(themes[1]);
     }
   }
-
+  document.body.style.backgroundColor = theme.bg;
   return (
     <div className={`${theme.bg} ${theme.text}`}>
       <Header changeTheme={changeTheme} themeIcon={theme.themeIcon} themeElementBg={theme.elements}/>

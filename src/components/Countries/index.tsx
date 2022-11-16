@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { ICountries } from "../../Types/types";
-import { Country } from "../Country";
+import { Country } from "./Country";
 import { Filter } from "./Filter";
 import { Input } from "./Input";
 
@@ -13,16 +13,28 @@ interface props {
 
 export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
   const [countries, setCountries] = useState<ICountries[] | []>([]);
-
+  const [countryName, setCountryName] = useState<any>();
+  
   async function getCountries() {
-    const request = await api.getCountries();
+    if (countryName) {
+      const request:any = await api.getCountries(countryName);
+      setCountries(request);
+      console.log('entrei')
+      return request;
+    }
+    const request:any = await api.getCountries();
     setCountries(request);
     return request;
   }
 
+  async function getCountryName(event:any) {
+    // const request = await api.getCountries(event.target.value);
+    setCountryName(event.target.value);
+  }
+
   useEffect(() => {
     getCountries();
-  }, []);
+  }, [countryName]);
   
   return (
     <section className="">
@@ -30,6 +42,7 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
         <Input
           themeElementBg={themeElementBg}
           themeInputPlaceholder={themeInputPlaceholder}
+          getCountryName={getCountryName}
         />
         <Filter themeElementBg={themeElementBg} />
       </div>

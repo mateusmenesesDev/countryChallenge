@@ -1,4 +1,4 @@
-import { ICountries } from "../../Types/types";
+import { ICountries } from "../../../Types/types";
 
 interface props {
   country: ICountries,
