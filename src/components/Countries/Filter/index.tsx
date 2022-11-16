@@ -5,7 +5,7 @@ interface props {
 export function Filter({themeElementBg}:props) {
   return (
     <div className="w-40">
-      <select name="region" id="region" className={`${themeElementBg} py-3 px-4 rounded-md w-full outline-none`}>
+      <select name="region" id="region" className={`${themeElementBg} py-3 px-4 rounded-md w-full outline-none shadow-md`}>
         <option value="Africa">Africa</option>
         <option value="America">America</option>
         <option value="Asia">Asia</option>

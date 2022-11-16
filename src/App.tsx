@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <div className={`${theme.bg} ${theme.text} h-screen`}>
+    <div className={`${theme.bg} ${theme.text}`}>
       <Header changeTheme={changeTheme} themeIcon={theme.themeIcon} themeElementBg={theme.elements}/>
       <Countries themeElementBg={theme.elements} themeInputPlaceholder={theme.inputPlaceholder}/>
     </div>

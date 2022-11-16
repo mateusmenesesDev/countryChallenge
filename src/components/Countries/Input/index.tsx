@@ -5,7 +5,7 @@ interface props {
 
 export function Input({themeElementBg, themeInputPlaceholder}:props) {
   return (
-    <div className={`${themeElementBg} flex items-center rounded-md lg:w-96`}>
+    <div className={`${themeElementBg} flex items-center rounded-md shadow-md lg:w-96`}>
       <i className="fa-solid fa-magnifying-glass ml-3"></i>
       <input 
         type="text" 
