@@ -1,7 +1,7 @@
 interface props {
   themeElementBg: string,
   getRegion: (event: React.ChangeEvent<HTMLSelectElement>) => void,
-  region: string | undefined
+  region: string
 }
 
 export function Filter({themeElementBg, getRegion, region}:props) {
