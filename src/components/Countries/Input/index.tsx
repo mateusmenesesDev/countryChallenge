@@ -11,7 +11,7 @@ export function Input({themeElementBg, themeInputPlaceholder, getCountryName}:pr
       <input 
         type="text" 
         placeholder="Search for a country" 
-        className={`${themeElementBg} ${themeInputPlaceholder} px-4 py-5 outline-none rounded-md`}
+        className={`${themeElementBg} ${themeInputPlaceholder} px-4 py-5 outline-none rounded-md w-full`}
         onChange={getCountryName}
       />
     </div>
