@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { ICountries } from "../../Types/types";
 import { Country } from "./Country";
@@ -13,13 +13,12 @@ interface props {
 
 export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
   const [countries, setCountries] = useState<ICountries[] | []>([]);
-  const [countryName, setCountryName] = useState<any>();
+  const [countryName, setCountryName] = useState<string>();
   
   async function getCountries() {
     if (countryName) {
       const request:any = await api.getCountries(countryName);
       setCountries(request);
-      console.log('entrei')
       return request;
     }
     const request:any = await api.getCountries();
@@ -27,9 +26,9 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
     return request;
   }
 
-  async function getCountryName(event:any) {
-    // const request = await api.getCountries(event.target.value);
+  async function getCountryName(event:React.ChangeEvent<HTMLInputElement>) {
     setCountryName(event.target.value);
+    return ''
   }
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-8 lg:px-36">
         {countries.map(country => (
-          <Country country={country} themeElementBg={themeElementBg}/>
+          <Country country={country} themeElementBg={themeElementBg} key={country.name.official}/>
         ))}
       </div>
     </section>
