@@ -1,7 +1,7 @@
 interface props {
   themeElementBg: string,
   themeInputPlaceholder: string,
-  getCountryName: (event: React.ChangeEvent<HTMLInputElement>) => Promise<string>;
+  getCountryName: (event: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
 }
 
 export function Input({themeElementBg, themeInputPlaceholder, getCountryName}:props) {

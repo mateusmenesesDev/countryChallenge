@@ -28,7 +28,6 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
 
   async function getCountryName(event:React.ChangeEvent<HTMLInputElement>) {
     setCountryName(event.target.value);
-    return ''
   }
 
   useEffect(() => {
