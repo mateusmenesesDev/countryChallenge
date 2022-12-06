@@ -1,19 +1,6 @@
 import { Countries } from "../../components/Countries";
+import { Theme } from "../../Types/types";
 
-interface Props {
-  theme: {
-    bg: string;
-    elements: string;
-    text: string;
-    inputPlaceholder: string;
-    themeIcon: string;
-  };
-}
-export function Home({ theme }: Props) {
-  return (
-    <Countries
-      themeElementBg={theme.elements}
-      themeInputPlaceholder={theme.inputPlaceholder}
-    />
-  );
+export function Home({ theme }: Theme) {
+  return <Countries theme={theme} />;
 }

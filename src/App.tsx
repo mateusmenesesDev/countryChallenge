@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import { Detail } from "./pages/Detail";
 import { NotFound } from "./pages/NotFound";
 import { RouteList } from "./routes/RouteList";
+import { Theme } from "./Types/types";
 
 function App() {
   const themes = [
@@ -36,7 +37,7 @@ function App() {
   document.body.style.backgroundColor = theme.bg;
 
   return (
-    <div className={`${theme.bg} ${theme.text}`}>
+    <div className={`${theme.text}`}>
       <Header
         changeTheme={changeTheme}
         themeIcon={theme.themeIcon}
