@@ -7,7 +7,7 @@ import { Theme } from "../Types/types";
 export function RouteList({ theme }: Theme) {
   return useRoutes([
     { path: "/", element: <Home theme={theme} /> },
-    { path: "detalhes/:country", element: <Detail theme={theme} /> },
+    { path: "detalhes/:countryName", element: <Detail theme={theme} /> },
     { path: "*", element: <NotFound /> },
   ]);
 }

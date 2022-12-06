@@ -2,6 +2,7 @@ export interface ICountries {
   name: {
     common: string;
     official: string;
+    nativeName: any;
   };
   region: string;
   capital: string;
