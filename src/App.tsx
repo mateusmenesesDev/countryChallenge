@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Detail } from "./pages/Detail";
 import { NotFound } from "./pages/NotFound";
+import { RouteList } from "./routes/RouteList";
 
 function App() {
   const themes = [
@@ -33,6 +34,7 @@ function App() {
     }
   }
   document.body.style.backgroundColor = theme.bg;
+
   return (
     <div className={`${theme.bg} ${theme.text}`}>
       <Header
@@ -40,11 +42,7 @@ function App() {
         themeIcon={theme.themeIcon}
         themeElementBg={theme.elements}
       />
-      <Routes>
-        <Route path="/" element={<Home theme={theme} />} />
-        <Route path="detalhes" element={<Detail />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <RouteList theme={theme} />
     </div>
   );
 }

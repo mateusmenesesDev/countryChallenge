@@ -53,24 +53,6 @@ export function Countries({ themeElementBg, themeInputPlaceholder }: props) {
         />
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-8 lg:px-36">
-        {/* {region !== "vazio"
-          ? countries.map(
-              (country) =>
-                country.region === region && (
-                  <Country
-                    country={country}
-                    themeElementBg={themeElementBg}
-                    key={country.name.official}
-                  />
-                )
-            )
-          : countries.map((country) => (
-              <Country
-                country={country}
-                themeElementBg={themeElementBg}
-                key={country.name.official}
-              />
-            ))} */}
         {region !== "vazio"
           ? countries
               .filter((countryRegion) => countryRegion.region === region)

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ICountries } from "../../../Types/types";
 
 interface props {
@@ -10,11 +11,13 @@ export function Country({ country, themeElementBg }: props) {
       {country !== undefined && (
         <div className={`${themeElementBg} rounded-lg w-80 h-96 shadow-md`}>
           <div className="w-full h-52">
-            <img
-              src={country.flags.png}
-              alt=""
-              className="w-full h-full rounded-t-lg"
-            />
+            <Link to={`detalhes/${country.name.common}`}>
+              <img
+                src={country.flags.png}
+                alt=""
+                className="w-full h-full rounded-t-lg"
+              />
+            </Link>
           </div>
           <div className="py-10 px-4">
             <div className="font-extrabold text-xl mb-2">
