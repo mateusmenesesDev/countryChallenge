@@ -1,6 +1,9 @@
 import { Header } from "./components/Header";
 import { useState } from "react";
 import { Countries } from "./components/Countries";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Detail } from "./pages/Detail";
 
 function App() {
   const themes = [
@@ -31,8 +34,15 @@ function App() {
   document.body.style.backgroundColor = theme.bg;
   return (
     <div className={`${theme.bg} ${theme.text}`}>
-      <Header changeTheme={changeTheme} themeIcon={theme.themeIcon} themeElementBg={theme.elements}/>
-      <Countries themeElementBg={theme.elements} themeInputPlaceholder={theme.inputPlaceholder}/>
+      <Header
+        changeTheme={changeTheme}
+        themeIcon={theme.themeIcon}
+        themeElementBg={theme.elements}
+      />
+      <Routes>
+        <Route path="/" element={<Home theme={theme} />} />
+        <Route path="detalhes" element={<Detail />} />
+      </Routes>
     </div>
   );
 }
