@@ -7,7 +7,7 @@ type ContextType = {
 };
 
 const initialState = {
-  theme: themes[0],
+  theme: { theme: themes[0] },
 };
 
 export const Context = createContext<ContextType>(initialState);
