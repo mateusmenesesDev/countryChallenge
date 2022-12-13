@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { Theme } from "../Types/types";
+import { useNavigate } from 'react-router-dom';
+import { Theme } from '../Types/types';
 
 export function BackBtn({ theme }: Theme) {
   const navigate = useNavigate();

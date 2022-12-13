@@ -5,9 +5,14 @@ export interface ICountries {
     nativeName: any;
   };
   region: string;
+  subregion: string;
   capital: string;
   population: number;
   flags: { png: string };
+  tld: [];
+  currencies: { [key: string]: any };
+  languages: { [key: string]: any };
+  borders: [];
 }
 
 export interface Theme {

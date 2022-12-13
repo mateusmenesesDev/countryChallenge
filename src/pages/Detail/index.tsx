@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
-import { BackBtn } from "../../components/BackBtn";
-import { ICountries, Theme } from "../../Types/types";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import { BackBtn } from '../../components/BackBtn';
+import { ICountries, Theme } from '../../Types/types';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export function Detail({ theme }: Theme) {
   const [country, setCountry] = useState<ICountries | null>(null);
@@ -23,24 +23,72 @@ export function Detail({ theme }: Theme) {
       return country.name.nativeName[nativeNameKey[0]].common;
     }
   }
-  console.log(getNativeName());
+  console.log(
+    '🚀 ~ file: index.tsx:18 ~ getCountry ~ country',
+    country?.languages
+  );
+
   return (
-    <div className="mx-4 my-10 md:px-10 lg:px-36">
+    <div className='mx-4 my-10 md:px-3 lg:px-36'>
       <BackBtn theme={theme} />
       {country !== null && (
-        <div className="grid gap-10 md:grid-cols-2">
-          <div className="w-full">
+        <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-2 lg:place-items-center'>
+          <div className='max-w-md lg:w-full'>
             <img
               src={country.flags.png}
-              alt="country flag"
-              className="w-full"
+              alt='country flag'
+              className='w-full h-full'
             />
           </div>
-          <div>
-            <div className="font-bold text-2xl">{country.name.common}</div>
-            <ul>
-              <li>Native Name: {getNativeName()}</li>
-            </ul>
+          <div className=''>
+            <div className='font-bold text-2xl mb-6'>{country.name.common}</div>
+            <div className='grid md:grid-cols-2 gap-3'>
+              <ul className='flex flex-col gap-2 mb-6'>
+                <li>
+                  <b>Native Name:</b> {getNativeName()}
+                </li>
+                <li>
+                  <b>Population:</b> {country.population}
+                </li>
+                <li>
+                  <b>Region:</b> {country.region}
+                </li>
+                <li>
+                  <b>Sub Region:</b> {country.subregion}
+                </li>
+                <li>
+                  <b>Capital:</b> {country.capital}
+                </li>
+              </ul>
+
+              <ul className='flex flex-col gap-2 mb-6'>
+                <li>
+                  <b>Top Level Domain:</b> {country.tld}
+                </li>
+                <li>
+                  <b>Currencies: </b>
+                  {country.currencies[Object.keys(country.currencies)[0]].name}
+                </li>
+                <li>
+                  <b>Languages:</b>
+                  {Object.keys(country.languages).map(
+                    (lang) => ` ${country.languages[lang]} `
+                  )}
+                </li>
+              </ul>
+            </div>
+            {country.borders !== undefined && (
+              <div className='font-semibold text-xl'>
+                Border Countries:
+                <ul className='flex gap-2 justify-center flex-wrap mt-3'>
+                  {Object.values(country.borders).map((border) => (
+                    <li className={`${theme.elements} px-4 py-1 text-sm`}>
+                      {border}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       )}
