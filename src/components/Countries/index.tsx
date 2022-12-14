@@ -13,14 +13,9 @@ export function Countries() {
   const [region, setRegion] = useState<string>('vazio');
 
   async function getCountries() {
-    if (countryName) {
-      const request = await api.getCountries(countryName);
-      setCountries(request);
-      return request;
-    }
+    console.log('t');
     const request = await api.getCountries();
     setCountries(request);
-    return request;
   }
 
   async function getCountryName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -33,7 +28,7 @@ export function Countries() {
 
   useEffect(() => {
     getCountries();
-  }, [countryName]);
+  }, []);
 
   return (
     <section className={`${theme.text}`}>

@@ -20,7 +20,7 @@ export function Detail() {
   }
   useEffect(() => {
     getCountry();
-  }, [countryName]);
+  }, []);
   function getNativeName() {
     if (country !== null) {
       const nativeNameKey = Object.keys(country.name.nativeName);
