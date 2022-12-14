@@ -16,11 +16,9 @@ export interface ICountries {
 }
 
 export interface Theme {
-  theme: {
-    bg: string;
-    elements: string;
-    text: string;
-    inputPlaceholder: string;
-    themeIcon: string;
-  };
+  bg: string;
+  elements: string;
+  text: string;
+  inputPlaceholder: string;
+  themeIcon: string;
 }

@@ -1,10 +1,14 @@
-import { useParams } from 'react-router-dom';
-import { BackBtn } from '../../components/BackBtn';
-import { ICountries, Theme } from '../../Types/types';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Context } from '../../contexts/Context';
+import { ICountries } from '../../Types/types';
+import { BackBtn } from '../../components/BackBtn';
 
-export function Detail({ theme }: Theme) {
+export function Detail() {
+  const { theme } = useContext(Context);
+  const body = document.querySelector('body');
+  body?.setAttribute('style', `background-color:${theme.bg}`);
   const [country, setCountry] = useState<ICountries | null>(null);
   const { countryName } = useParams();
   async function getCountry() {
@@ -23,14 +27,9 @@ export function Detail({ theme }: Theme) {
       return country.name.nativeName[nativeNameKey[0]].common;
     }
   }
-  console.log(
-    '🚀 ~ file: index.tsx:18 ~ getCountry ~ country',
-    country?.languages
-  );
-
   return (
-    <div className='mx-4 my-10 md:px-3 lg:px-36'>
-      <BackBtn theme={theme} />
+    <main className={`mx-4 my-10 md:px-3 lg:px-36 ${theme.text}`}>
+      <BackBtn />
       {country !== null && (
         <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-2 lg:place-items-center'>
           <div className='max-w-md lg:w-full'>
@@ -82,7 +81,10 @@ export function Detail({ theme }: Theme) {
                 Border Countries:
                 <ul className='flex gap-2 justify-center flex-wrap mt-3'>
                   {Object.values(country.borders).map((border) => (
-                    <li className={`${theme.elements} px-4 py-1 text-sm`}>
+                    <li
+                      className={`${theme.elements} px-4 py-1 text-sm`}
+                      key={border}
+                    >
                       {border}
                     </li>
                   ))}
@@ -92,6 +94,6 @@ export function Detail({ theme }: Theme) {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
