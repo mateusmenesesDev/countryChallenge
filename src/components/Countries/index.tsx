@@ -14,8 +14,14 @@ export function Countries() {
 
   async function getCountries() {
     console.log('t');
+    if (countryName) {
+      const request = await api.getCountries(countryName);
+      setCountries(request);
+      return request;
+    }
     const request = await api.getCountries();
     setCountries(request);
+    return request;
   }
 
   async function getCountryName(event: React.ChangeEvent<HTMLInputElement>) {
