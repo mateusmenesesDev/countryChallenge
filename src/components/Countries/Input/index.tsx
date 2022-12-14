@@ -1,10 +1,12 @@
-import { Theme } from '../../../Types/types';
+import { useContext } from 'react';
+import { Context } from '../../../contexts/Context';
 
-interface Props extends Theme {
+interface Props {
   getCountryName: (event: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
 }
 
-export function Input({ theme, getCountryName }: Props) {
+export function Input({ getCountryName }: Props) {
+  const { theme } = useContext(Context);
   return (
     <div
       className={`${theme.elements} flex items-center rounded-md shadow-md lg:w-96`}

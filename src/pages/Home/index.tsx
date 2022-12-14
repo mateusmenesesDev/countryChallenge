@@ -1,6 +1,14 @@
+import { useContext } from 'react';
 import { Countries } from '../../components/Countries';
-import { Theme } from '../../Types/types';
+import { Context } from '../../contexts/Context';
 
-export function Home({ theme }: Theme) {
-  return <Countries theme={theme} />;
+export function Home() {
+  const { theme } = useContext(Context);
+  const body = document.querySelector('body');
+  body?.setAttribute('style', `background-color:${theme.bg}`);
+  return (
+    <main>
+      <Countries />
+    </main>
+  );
 }

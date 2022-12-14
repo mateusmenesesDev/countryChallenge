@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Theme } from '../Types/types';
+import { Context } from '../contexts/Context';
 
-export function BackBtn({ theme }: Theme) {
+export function BackBtn() {
+  const { theme } = useContext(Context);
   const navigate = useNavigate();
   return (
     <button

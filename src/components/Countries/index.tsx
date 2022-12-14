@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Context } from '../../contexts/Context';
 import { api } from '../../api/api';
-import { ICountries, Theme } from '../../Types/types';
+import { ICountries } from '../../Types/types';
 import { Country } from './Country';
 import { Filter } from './Filter';
 import { Input } from './Input';
 
-export function Countries({ theme }: Theme) {
+export function Countries() {
+  const { theme } = useContext(Context);
   const [countries, setCountries] = useState<ICountries[] | []>([]);
   const [countryName, setCountryName] = useState<string>();
   const [region, setRegion] = useState<string>('vazio');
 
   async function getCountries() {
     if (countryName) {
-      const request: any = await api.getCountries(countryName);
+      const request = await api.getCountries(countryName);
       setCountries(request);
       return request;
     }
-    const request: any = await api.getCountries();
+    const request = await api.getCountries();
     setCountries(request);
     return request;
   }
@@ -34,9 +36,9 @@ export function Countries({ theme }: Theme) {
   }, [countryName]);
 
   return (
-    <section className=''>
+    <section className={`${theme.text}`}>
       <div className='my-12 w-full px-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:px-36'>
-        <Input theme={theme} getCountryName={getCountryName} />
+        <Input getCountryName={getCountryName} />
         <Filter
           themeElementBg={theme.elements}
           getRegion={getRegion}
